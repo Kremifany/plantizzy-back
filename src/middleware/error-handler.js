@@ -12,7 +12,11 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     )}field, please choose another value`;
     customError.statusCode = 400;
   }
-
+if (err.code === 'EADDRINUSE'){
+  console.log(err);
+  customError.msg = `port no ${process.env.PORT} already in use,please coose another port`;
+  customError.statusCode = 400;
+}
   if (err.name === "ValidationError") {
     //console.log(Object.values(err.errors))
     customError.msg = Object.values(err.errors)

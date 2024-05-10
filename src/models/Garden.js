@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 
 const GardenSchema = new mongoose.Schema(
   {
+    userId: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      required: true,
+      unique: true,
+    },
     logicId: {
       type: String,
       required: [true, "Please provide Id for the garden"],

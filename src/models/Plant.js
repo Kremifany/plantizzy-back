@@ -43,7 +43,7 @@ const plantSchema = new mongoose.Schema(
       required: [true, "Please provide days between watering"],
     },
     companionPlants: {},
-    frostReasistant: {
+    frostResistant: {
       Type: bool,
       required: [true, "Please provide if frost resistant"],
     },
