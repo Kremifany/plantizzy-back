@@ -11,7 +11,20 @@ const plantSchema = new mongoose.Schema(
       type: String,
       maxlength: 100,
     },
-    sort: {},
+    sort: {
+      type: String,
+      enum: [
+        "fruiting",//tomatoes,peppers,bush beans,sugar snap peas,cucumbers
+        "fruit",
+        "medicinal",
+        "herb",
+        "leafy greens",
+        "root crop",
+        "flower",//zinnias,calendula,marigolds,chamomile,anise hyssop,strawflowers
+      ],
+      required:[true,"Please specify the sort of plant"],
+      maxlength: 15
+    },
     image: {
       type: String,
     },
@@ -42,14 +55,21 @@ const plantSchema = new mongoose.Schema(
       ref: "User",
       required: [true, "Please provide days between watering"],
     },
-    companionPlants: {},
+    companionPlants: {
+      type: [String],
+    },
     frostResistant: {
-      Type: bool,
+      type: Boolean,
       required: [true, "Please provide if frost resistant"],
     },
-    sizeOfPlant: {},
+    area: {
+      type:[Number]
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Plant", PlantSchema);
+module.exports = {
+  Plant: mongoose.model("Plant", plantSchema),
+  plantSchema: plantSchema, 
+};

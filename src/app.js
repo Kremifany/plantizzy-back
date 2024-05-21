@@ -9,8 +9,8 @@ const rateLimiter = require("express-rate-limit");
 const mainRouter = require("./routes/mainRouter.js");
 //routers
 const authRouter = require("./routes/auth");
-// const gardensRouter = require("./routes/gardensRouter");
-// const plantsRouter = require("./routes/plantsRouter");
+const gardensRouter = require("./routes/gardensRouter");
+const plantsRouter = require("./routes/plantsRouter");
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");

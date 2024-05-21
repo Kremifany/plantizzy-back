@@ -1,14 +1,12 @@
 const mongoose = require("mongoose");
-
 const GardenSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Types.ObjectId,
       ref: "User",
       required: true,
-      unique: true,
     },
-    logicId: {
+    name: {
       type: String,
       required: [true, "Please provide Id for the garden"],
       maxlength: 50,
@@ -23,15 +21,15 @@ const GardenSchema = new mongoose.Schema(
       required: [true, "Please provide size"],
       maxlength: 2,
     },
-    createdBy: {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
-      required: [true, "Please provide user"],
-    },
-    plants: {
-      type: [Plant],
-      maxlength: 100,
-    },
+    lastDateWatered: [Number],
+    plants: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Plant",
+        unique: "false",
+        count: [Number],
+      },
+    ],
   },
   { timestamps: true }
 );
